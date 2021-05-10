@@ -1,4 +1,4 @@
-import 'package:estudo_bloc/app/modules/home_page.dart';
+import 'package:estudo_bloc/app/modules/home/home_module.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -9,7 +9,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => HomeModule(),
       },
     );
   }

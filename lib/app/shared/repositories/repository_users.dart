@@ -12,9 +12,7 @@ class RepositoryUsers {
 
   Future<Response<String>> getUsersData() async {
     try {
-      Response<String> _response = await _dio.get(
-        "/users",
-      );
+      Response<String> _response = await _dio.get("/users");
       return _response;
     } catch (e) {
       throw e;

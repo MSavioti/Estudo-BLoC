@@ -11,15 +11,15 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   final UsersService _usersService = UsersService();
-  List<User> user;
+  List<User> users;
 
   Future<void> _listUsers() async {
     try {
       emit(HomeLoadingState());
-      user = await _usersService.getUsers();
-      emit(HomeDoneState());
+      users = await _usersService.getUsers();
+      emit(HomeDoneState(users));
     } catch (e) {
-      emit(HomeErrorState('Erro ao carregar lista de usuários.'));
+      emit(HomeErrorState(e.toString()));
     }
   }
 }

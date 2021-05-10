@@ -1,4 +1,4 @@
-import 'package:estudo_bloc/app/pages/home_page.dart';
+import 'package:estudo_bloc/app/modules/home_page.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {

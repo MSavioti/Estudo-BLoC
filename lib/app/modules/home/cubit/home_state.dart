@@ -14,7 +14,9 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeDoneState extends HomeState {
-  const HomeDoneState();
+  const HomeDoneState(this.users);
+
+  final List<User> users;
 }
 
 class HomeErrorState extends HomeState {

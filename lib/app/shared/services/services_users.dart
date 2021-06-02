@@ -11,11 +11,16 @@ class UsersService {
     try {
       Response _result = await _usersRepository.getUsersData();
       if (_result.statusCode != 200) throw _result.statusMessage;
+      final List<dynamic> _resultData = json.decode(_result.data);
+      _resultData.map((e) => User.fromJson(e)).toList();
       final List<User> users = [];
-      List<dynamic> data = jsonDecode(_result.data);
-      data.forEach((i) {
-        print(i);
-      });
+
+      if (_resultData != null && _resultData.isNotEmpty)
+        _resultData.forEach((element) {
+          User user = User.fromJson(element);
+          users.add(user);
+        });
+
       return users;
     } catch (e) {
       throw e;

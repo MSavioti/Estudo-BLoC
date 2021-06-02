@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
       users = await _usersService.getUsers();
       emit(HomeDoneState(users));
     } catch (e) {
-      emit(HomeErrorState(e.toString()));
+      emit(HomeErrorState('ERRO: Lista de usuários não carregada.'));
     }
   }
 }

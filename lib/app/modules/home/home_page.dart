@@ -11,25 +11,38 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Estudo Cubit'),
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
+      body: BlocConsumer<HomeCubit, HomeState>(
+        listener: (context, state) {
           if (state is HomeErrorState) {
-            return Text(state.message);
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
           }
-
+        },
+        builder: (context, state) {
           if (state is HomeDoneState) {
             return ListView.builder(
               itemCount: state.users.length,
               itemBuilder: (_, i) {
                 return ListTile(
                   title: Text(state.users[i].name),
-                  subtitle: Text(state.users[i].company.name),
+                  subtitle: Text(state.users[i].email),
                 );
               },
             );
           }
 
-          return Center(child: CircularProgressIndicator());
+          if (state is HomeErrorState) {
+            return Center(child: Icon(Icons.error));
+          }
+
+          if (state is HomeLoadingState) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          return SizedBox();
         },
       ),
     );

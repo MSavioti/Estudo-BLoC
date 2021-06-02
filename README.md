@@ -1,3 +1,3 @@
 # Estudo - BLoC
 
-A simple app created to learn how to use Cubit and BLoC Pattern.
+Um app simples criado para estudar Cubit e BLoC Pattern.
